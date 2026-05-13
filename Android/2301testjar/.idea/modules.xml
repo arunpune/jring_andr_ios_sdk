@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2301testjar.iml" filepath="$PROJECT_DIR$/.idea/modules/2301testjar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/2301testjar.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/2301testjar.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hellochartslibrary/2301testjar.hellochartslibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/hellochartslibrary/2301testjar.hellochartslibrary.iml" />
+    </modules>
+  </component>
+</project>

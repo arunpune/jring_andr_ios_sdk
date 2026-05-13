@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Android
+build/
+.gradle/
+
+# iOS
+DerivedData/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
