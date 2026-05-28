@@ -131,6 +131,10 @@ public class BubbleValue {
 		return label;
 	}
 
+	public char[] getLabelAsChars() {
+		return label;
+	}
+
 	public BubbleValue setLabel(char[] label) {
 		this.label = label;
 		return this;

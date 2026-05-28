@@ -191,6 +191,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.onItemClic
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         mainRecyclerview.setLayoutManager(gridLayoutManager);
          mainAdapter = new MainAdapter(options, this);
+         mainAdapter.setEnable(true);
         mainRecyclerview.setAdapter(mainAdapter);
         subscription = RxBus.getInstance().toObservable(BleData.class).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<BleData>() {
             @Override
