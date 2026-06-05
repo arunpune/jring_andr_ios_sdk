@@ -1,1 +1,0 @@
-# jring_andr_ios_sdk
