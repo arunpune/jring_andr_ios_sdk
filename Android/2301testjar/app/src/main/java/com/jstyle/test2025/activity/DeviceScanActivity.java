@@ -35,6 +35,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,6 +76,21 @@ public class DeviceScanActivity extends AppCompatActivity implements Permissions
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         ButterKnife.bind(this);
+
+        Button btnSkip = findViewById(R.id.btn_skip);
+        if (btnSkip != null) {
+            btnSkip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mScanning) {
+                        scanLeDevice(false);
+                    }
+                    final Intent intent = new Intent(DeviceScanActivity.this, MainActivity.class);
+                    intent.putExtra("isSkip", true);
+                    startActivity(intent);
+                }
+            });
+        }
 
         mHandler = new Handler();
         if (!getPackageManager().hasSystemFeature(

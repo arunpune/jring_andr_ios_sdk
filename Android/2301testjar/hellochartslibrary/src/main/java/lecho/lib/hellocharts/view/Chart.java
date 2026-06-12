@@ -225,6 +225,13 @@ public interface Chart {
 	public void setCurrentViewport(Viewport targetViewport, boolean isAnimated);
 
 	/**
+	 * Sets current viewport.
+	 * 
+	 * Note. viewport have to be set after chartData has been set.
+	 */
+	public void setCurrentViewport(Viewport targetViewport);
+
+	/**
 	 * Reset maximum viewport and current viewport. Values for both viewports will be auto-calculated using current
 	 * chart data ranges.
 	 */

@@ -25,6 +25,7 @@ import android.graphics.Typeface;
 public abstract class AbstractChartRenderer implements ChartRenderer {
 	public int DEFAULT_LABEL_MARGIN_DP = 4;
 	protected Chart chart;
+	protected ChartComputator computator;
 
 	/** Paint for value labels. */
 	protected Paint labelPaint = new Paint();
@@ -65,6 +66,7 @@ public abstract class AbstractChartRenderer implements ChartRenderer {
 		this.density = context.getResources().getDisplayMetrics().density;
 		this.scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
 		this.chart = chart;
+		this.computator = chart.getChartComputator();
 
 		labelMargin = Utils.dp2px(density, DEFAULT_LABEL_MARGIN_DP);
 		labelOffset = labelMargin;

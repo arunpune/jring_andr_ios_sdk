@@ -242,3 +242,8 @@
 "二维码连接"  = "QR code connection";
 "扫描"  = "Scan";
 "二维码配对" = "QR code pairing";
+
+"跳过并进入主界面" = "Skip to Dashboard";
+"断开连接 (跳过扫描)" = "Disconnected (Skipped Scan)";
+"取消" = "Cancel";
+

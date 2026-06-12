@@ -190,8 +190,14 @@ public class MainActivity extends BaseActivity implements MainAdapter.onItemClic
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         mainRecyclerview.setLayoutManager(gridLayoutManager);
-         mainAdapter = new MainAdapter(options, this);
+        boolean isSkip = getIntent().getBooleanExtra("isSkip", false);
+        mainAdapter = new MainAdapter(options, this);
+        mainAdapter.setEnable(isSkip);
         mainRecyclerview.setAdapter(mainAdapter);
+        if (isSkip) {
+            btConnect.setEnabled(true);
+            btConnect.setText("Disconnected (Skipped Scan)");
+        }
         subscription = RxBus.getInstance().toObservable(BleData.class).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<BleData>() {
             @Override
             public void accept(BleData bleData) throws Exception {

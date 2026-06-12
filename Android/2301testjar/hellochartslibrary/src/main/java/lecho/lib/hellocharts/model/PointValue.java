@@ -74,6 +74,10 @@ public class PointValue {
 		return label;
 	}
 
+	public char[] getLabelAsChars() {
+		return label;
+	}
+
 	public PointValue setLabel(char[] label) {
 		this.label = label;
 		return this;

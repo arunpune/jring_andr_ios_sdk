@@ -355,6 +355,11 @@ public abstract class AbstractChartView extends View implements Chart {
 	}
 
 	@Override
+	public void setCurrentViewport(Viewport targetViewport) {
+		setCurrentViewport(targetViewport, false);
+	}
+
+	@Override
 	public Viewport getCurrentViewport() {
 		return getChartRenderer().getCurrentViewport();
 	}

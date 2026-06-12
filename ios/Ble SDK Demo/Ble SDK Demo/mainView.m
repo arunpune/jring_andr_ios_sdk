@@ -32,6 +32,7 @@
     
     MBProgressHUD * HUD;
     
+    BOOL isSkip;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnScan;
@@ -50,6 +51,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_btnScan setTitle:LocalForkey(@"扫描") forState:UIControlStateNormal];
     
     arrayPeripheral = [[NSMutableArray alloc] init];
     arrayPeripheralStatus = [[NSMutableArray alloc] init];
@@ -135,14 +138,34 @@
 
 -(UIView *)MyFootView
 {
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Width-40*Proportion, 44)];
-    view.backgroundColor = [UIColor redColor];
-    UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, Width-40*Proportion, 44)];
-    [button setTitle:@"Cancel" forState:UIControlStateNormal];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Width-40*Proportion, 90*Proportion)];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton * btnSkip = [[UIButton alloc]initWithFrame:CGRectMake(0, 5*Proportion, Width-40*Proportion, 35*Proportion)];
+    btnSkip.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    [btnSkip setTitle:LocalForkey(@"跳过并进入主界面") forState:UIControlStateNormal];
+    [btnSkip setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnSkip.layer.cornerRadius = 5*Proportion;
+    btnSkip.titleLabel.font = [UIFont systemFontOfSize:14];
+    [btnSkip addTarget:self action:@selector(skipToDashboard) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btnSkip];
+    
+    UIButton * button = [[UIButton alloc]initWithFrame:CGRectMake(0, 45*Proportion, Width-40*Proportion, 35*Proportion)];
+    button.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:59.0/255.0 blue:48.0/255.0 alpha:1.0];
+    [button setTitle:LocalForkey(@"取消") forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.layer.cornerRadius = 5*Proportion;
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
     [button addTarget:self action:@selector(HiddenTableView) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
     return view;
-    
+}
+
+-(void)skipToDashboard
+{
+    isSkip = YES;
+    [self HiddenTableView];
+    [_btnScan setTitle:LocalForkey(@"断开连接 (跳过扫描)") forState:UIControlStateNormal];
 }
 
 -(void)ShowMyTableView
@@ -172,10 +195,13 @@
 #pragma mark MyBleDelegate
 -(void)ConnectSuccessfully
 {
-    
+    isSkip = NO;
+    [_btnScan setTitle:LocalForkey(@"扫描") forState:UIControlStateNormal];
 }
 -(void)Disconnect:(NSError *_Nullable)error
 {
+    isSkip = NO;
+    [_btnScan setTitle:LocalForkey(@"扫描") forState:UIControlStateNormal];
     [PishumToast showToastWithMessage:LocalForkey(@"设备断开连接") Length:TOAST_SHORT ParentView:self.view];
 }
 -(void)scanWithPeripheral:(CBPeripheral*_Nonnull)peripheral advertisementData:(NSDictionary<NSString *, id> *_Nonnull)advertisementData RSSI:(NSNumber *_Nonnull)RSSI
@@ -399,6 +425,8 @@
 
 -(void)findMyBle
 {
+    isSkip = NO;
+    [_btnScan setTitle:LocalForkey(@"扫描") forState:UIControlStateNormal];
     [arrayPeripheral removeAllObjects];
     [arrayPeripheralStatus removeAllObjects];
     [myTableView reloadData];

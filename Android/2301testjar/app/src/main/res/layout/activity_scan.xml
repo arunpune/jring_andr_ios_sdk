@@ -3,6 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Skip to Dashboard" />
+
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"

@@ -36,6 +36,10 @@ public class AxisValue {
 		return label;
 	}
 
+	public char[] getLabelAsChars() {
+		return label;
+	}
+
 	/**
 	 * Set custom label for this axis value.
 	 * 
