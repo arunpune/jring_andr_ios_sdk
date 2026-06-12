@@ -68,6 +68,33 @@ The project runs on Gradle 6.5, which is not compatible with modern Java runtime
 
 ---
 
+## Building and Locating the APK File
+
+To generate a standalone APK package file for testing or deployment, use one of the following methods:
+
+### Method 1: Using the Android Studio UI (Recommended)
+1. In the top menu bar of Android Studio, select **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
+2. Wait for the build task to complete (monitor the progress in the bottom status bar).
+3. Once completed, a notification popup will appear at the bottom-right corner stating:  
+   `APK(s) generated successfully for 1 module: Locate`
+4. Click the blue **Locate** link in that popup. Android Studio will open your macOS Finder directly in the directory containing the APK file.
+
+### Method 2: Using the Command Line
+1. Open your terminal and navigate to the project directory:
+   ```bash
+   cd Android/2301testjar
+   ```
+2. Execute the Gradle assemble task:
+   ```bash
+   ./gradlew assembleDebug
+   ```
+
+### Output Location
+The compiled debug APK file is named **`app-debug.apk`** and is generated at:
+* **Path:** [app-debug.apk](file:///Users/omkar/Documents/Canspirit/jring_andr_ios_sdk/Android/2301testjar/app/build/outputs/apk/debug/app-debug.apk) *(Relative: `Android/2301testjar/app/build/outputs/apk/debug/app-debug.apk`)*
+
+---
+
 ## App Features
 
 At the bottom of the main dashboard, the app lists the following SDK interaction features:
